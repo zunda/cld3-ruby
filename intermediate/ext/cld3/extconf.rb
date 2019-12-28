@@ -17,7 +17,7 @@
 require "mkmf"
 
 def ln_fallback(source, destination)
-  FileUtils.ln(source, destination)
+  FileUtils.ln(source, destination) unless File.exist?(destination)
 rescue
   begin
     FileUtils.ln_s(source, destination)
